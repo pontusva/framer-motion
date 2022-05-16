@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 const Home = () => {
     const [showTitle, setShowTitle] = useState(true);
-    const [modal, setModal] = useState(true);
 
     setTimeout(() => {
         setShowTitle(false);
