@@ -4,45 +4,41 @@ import { useState } from 'react';
 const Home = () => {
     const [showTitle, setShowTitle] = useState(true);
 
-    setTimeout(() => {
-        setShowTitle(false);
-    }, 10000)
+    // uncomment this if we want to make the "title" dissapear after 10 seconds... No exit animations at this moment.
 
-    const leftVariant = {
+    // setTimeout(() => {
+    //     setShowTitle(false);
+    // }, 10000)
+
+    const buttonVariants = {
         slideX: {
             opacity: 0,
-            x: -500,
+            x: 0,
             
         },
         animation: {
             opacity: 1, 
-            x: 0,
+            x: [0, -10,  0,],
             transition: {
                 x: {
                     ease: "easeInOut",
-                    duration: 0.8
+                    duration: 1,
+                    delay: 5
                 }              
+            }
+        },
+    }
+
+    const titleVariants = {
+        animation: {
+            color: '#ff2994',
+            transition: {
+                delay: 2
             }
         }
     }
 
-    const rightVariant = {
-        slideX: {
-            opacity: 0,
-            x: 500,
-            
-        },
-        animation: {
-            opacity: 1, 
-            x: 0,
-            transition: {
-                x: {
-                    ease: "easeInOut",
-                    duration: 1
-                }              
-            }
-        }
-    }
+   
 
 
   return (
@@ -51,12 +47,12 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="
+        className="        
         text-3xl
         text-white 
         font-bold 
-        h-screen 
-        screen 
+        h-screen
+        w-screen
         grid 
         md:grid-cols-3
         grid-cols-1
@@ -66,14 +62,12 @@ const Home = () => {
         from-indigo-500 
         via-purple-500 
         to-indigo-500
-         justify-items-center">
-             <AnimatePresence>
+        justify-items-center">
+            <AnimatePresence>
                 {showTitle && (
                     <motion.h1
-                    initial={{y: [-500]}} 
-                    animate={{ color: '#ff2994', y: 0}}
-                    transition={{delay: 2, type: 'spring', stiffness: 120}}
-                    exit={{y: -1000}}
+                    variants={titleVariants}
+                    animate='animation'                 
                     className='md:col-span-3 text-white font-bold text-7xl'>Choose Your Sign</motion.h1>
                 )}
             </AnimatePresence>
@@ -81,7 +75,7 @@ const Home = () => {
          
             <motion.button
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={leftVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -97,7 +91,7 @@ const Home = () => {
 
             <motion.button
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={leftVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -112,7 +106,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={leftVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -127,7 +121,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={rightVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -142,7 +136,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={rightVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -157,7 +151,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={rightVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -172,7 +166,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={leftVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -187,7 +181,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={leftVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -202,7 +196,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={leftVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -220,7 +214,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={rightVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -238,7 +232,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={rightVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
@@ -256,7 +250,7 @@ const Home = () => {
 
             <motion.button 
             className='rounded-full p-5 border-2 border-white w-72'
-            variants={rightVariant}
+            variants={buttonVariants}
             initial='slideX'
             animate='animation'
             whileHover={{ 
